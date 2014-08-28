@@ -26,14 +26,16 @@ class Image():
 
 
 	def verify_image_dirs(self):
-		dirs = [self.base_path+self.album_small_path,
-		        self.base_path+self.album_large_path,
-		        self.base_path+self.artist_small_path,
-		        self.base_path+self.artist_large_path]
+		dirs = [os.path.join(self.base_path, self.album_small_path),
+		        os.path.join(self.base_path, self.album_large_path),
+		        os.path.join(self.base_path, self.artist_small_path),
+		        os.path.join(self.base_path, self.artist_large_path)]
 		for path in dirs:
 			if not os.path.isdir(path):
 				os.mkdir(path)
 				print "created image directory at "+path
+			else:
+				print "verified image directory at "+path
 
 
 	def handler(self, url, size, kind):
